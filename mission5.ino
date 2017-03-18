@@ -35,7 +35,18 @@ String working() {
   } while (temp == 85.0 || temp == (-127.0));
   return(String("field1=")+String(temp));
 }
-
+String working_s(){
+  static int r = 0;// do some magic here!
+  r=r+1;
+  float x=sin(r)*100;
+  return(String("field3=")+String(int(x)));
+}
+String working_s2(){
+  static int r = 0;// do some magic here!
+  r=r+1;
+  float x=sin(r)*400;
+  return(String("field4=")+String(int(x)));
+}
 void delivering(String payload) { 
   WiFiClient client;
   Serial.print("connecting to ");
@@ -86,6 +97,12 @@ void loop() {
   if (millis() > mark ) {
      mark = millis() + interval;
      String payload = working();
+     delivering(payload);
+   payload=working_random();
+     delivering(payload);
+     payload=working_s();
+     delivering(payload);
+     payload=working_s2();
      delivering(payload);
   }
 }
