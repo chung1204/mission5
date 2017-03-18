@@ -35,6 +35,10 @@ String working() {
   } while (temp == 85.0 || temp == (-127.0));
   return(String("field1=")+String(temp));
 }
+String working_random(){
+  int r=rand()%100+1;
+  return(String("field2=")+String(r));
+}
 String working_s(){
   static int r = 0;// do some magic here!
   r=r+1;
